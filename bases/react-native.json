@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "FundingPips React Native",
+  "extends": ["./base.json", "@react-native/typescript-config/tsconfig.json"],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": false,
+    "checkJs": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "index.js", ".monicon/*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "android",
+    "ios",
+    "build",
+    "coverage",
+    "**/Pods/**"
+  ]
+}

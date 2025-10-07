@@ -1,0 +1,75 @@
+{
+  "name": "@fundingpips/typescript-config",
+  "version": "1.0.0",
+  "description": "Shareable TypeScript configurations for FundingPips projects",
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "config",
+    "fundingpips",
+    "nextjs",
+    "react-native",
+    "node"
+  ],
+  "homepage": "https://github.com/fundingpips/typescript-config#readme",
+  "bugs": {
+    "url": "https://github.com/fundingpips/typescript-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fundingpips/typescript-config.git"
+  },
+  "license": "MIT",
+  "author": "FundingPips",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./bases/base.json"
+    },
+    "./package.json": "./package.json",
+    "./base": "./bases/base.json",
+    "./next": "./bases/next.json",
+    "./react-native": "./bases/react-native.json",
+    "./node": "./bases/node.json",
+    "./node-esm": "./bases/node-esm.json",
+    "./library": "./bases/library.json",
+    "./vite": "./bases/vite.json"
+  },
+  "files": [
+    "bases"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky",
+    "release": "npm publish --access public",
+    "test": "bash scripts/validate-all.sh",
+    "test:config": "bash scripts/validate-config.sh"
+  },
+  "dependencies": {
+    "@react-native/typescript-config": "0.81.1",
+    "@tsconfig/next": "2.0.3",
+    "@tsconfig/node-lts": "22.0.2",
+    "@tsconfig/strictest": "2.0.6",
+    "@tsconfig/vite-react": "7.0.1"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "16.2.3",
+    "prettier": "3.6.2",
+    "prettier-plugin-packagejson": "2.5.19",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.9.0"
+  },
+  "packageManager": "pnpm@10.18.1",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  }
+}

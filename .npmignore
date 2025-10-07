@@ -1,0 +1,58 @@
+# Source control
+.git/
+.github/
+.gitignore
+
+# Development files
+.editorconfig
+.eslintrc*
+.prettierrc*
+.huskyrc*
+.husky/
+
+# Testing
+coverage/
+test/
+tests/
+__tests__/
+*.test.ts
+*.spec.ts
+
+# Build files
+.tsbuildinfo
+*.tsbuildinfo
+
+# Documentation source
+docs/
+examples/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package manager files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Environment
+.env*
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Logs
+*.log
+logs/
+
+# Keep only what's needed for the package
+# The 'files' field in package.json handles this, but this is a backup
