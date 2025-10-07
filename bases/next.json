@@ -3,7 +3,6 @@
   "display": "FundingPips Next.js",
   "extends": ["./base.json", "@tsconfig/next/tsconfig.json"],
   "compilerOptions": {
-    "target": "ES2017",
     "allowJs": false,
     "checkJs": false,
     "allowImportingTsExtensions": false

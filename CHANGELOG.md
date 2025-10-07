@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-10-07
+
+### Fixed
+
+- **Next.js Config** - Removed ES2017 target override to inherit ES2022 from base config
+  - Restores modern language features: top-level await, private class fields, nullish coalescing assignment, Error causes, Array `.at()`
+  - Next.js 15+ assumes modern runtimes; ES2017 was an unnecessary 5-year regression
+- **Next.js Config** - Explicitly disable `checkJs` to resolve conflict with `@tsconfig/strictest`
+  - TypeScript requires `allowJs: true` when `checkJs: true`, but Next.js projects should be TypeScript-only
+- **Base Config** - Add `noUncheckedSideEffectImports: true` for stricter import validation
+  - Catches non-existent side-effect imports (e.g., `import "./missing.css"`) at compile time
+
+## [1.0.1] - 2025-10-07
+
+### Fixed
+
+- **Next.js Config** - Resolve `checkJs`/`allowJs` conflict with `@tsconfig/strictest` preset
+
 ## [1.0.0] - 2025-10-07
 
 ### Added
@@ -62,7 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Extends base + `@tsconfig/next`
 - JSX preserve mode for Next.js processing
 - DOM library types included
-- ES2017 target for broader compatibility
+- Inherits ES2022 target from base
 
 #### `/react-native`
 
@@ -114,4 +132,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Automated validation scripts
   - Comprehensive test coverage
 
+[1.0.2]: https://github.com/fundingpips/typescript-config/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/fundingpips/typescript-config/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/fundingpips/typescript-config/releases/tag/v1.0.0
