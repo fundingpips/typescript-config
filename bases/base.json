@@ -25,6 +25,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": false,
     "sourceMap": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "noUncheckedSideEffectImports": true
   }
 }
