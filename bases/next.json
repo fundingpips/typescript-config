@@ -5,6 +5,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "allowJs": false,
+    "checkJs": false,
     "allowImportingTsExtensions": false
   },
   "include": [

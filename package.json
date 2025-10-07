@@ -1,6 +1,6 @@
 {
   "name": "@fundingpips/typescript-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shareable TypeScript configurations for FundingPips projects",
   "keywords": [
     "typescript",
