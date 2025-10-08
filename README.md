@@ -159,7 +159,7 @@ For custom configurations, extend the base:
 
 ## Strictness Settings
 
-All configurations extend `@tsconfig/strictest` which enables:
+All configurations include the strictest TypeScript settings for maximum type safety:
 
 ```typescript
 // Core strict settings

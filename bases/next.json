@@ -1,8 +1,29 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Next.js",
-  "extends": ["./base.json", "@tsconfig/next/tsconfig.json"],
+  "_comment": [
+    "Settings from @tsconfig/next@2.0.3 inlined to avoid ESLint resolver issues.",
+    "Original: https://github.com/tsconfig/bases/tree/main/bases/next",
+    "Last synced: 2025-01-08"
+  ],
+  "extends": "./base.json",
   "compilerOptions": {
+    "strict": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "allowJs": false,
     "checkJs": false,
     "allowImportingTsExtensions": false

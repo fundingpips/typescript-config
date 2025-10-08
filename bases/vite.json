@@ -1,8 +1,31 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Vite React",
-  "extends": ["./base.json", "@tsconfig/vite-react/tsconfig.json"],
+  "_comment": [
+    "Settings from @tsconfig/vite-react@7.0.1 inlined for ESLint compatibility.",
+    "Original: https://github.com/tsconfig/bases/tree/main/bases/vite-react",
+    "Last synced: 2025-01-08"
+  ],
+  "extends": "./base.json",
   "compilerOptions": {
+    "strict": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
     "allowJs": false,
     "types": ["vite/client"]
   },

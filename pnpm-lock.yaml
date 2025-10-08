@@ -7,22 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@react-native/typescript-config':
-        specifier: 0.82.0
-        version: 0.82.0
-      '@tsconfig/next':
-        specifier: 2.0.3
-        version: 2.0.3
-      '@tsconfig/node-lts':
-        specifier: 22.0.2
-        version: 22.0.2
-      '@tsconfig/strictest':
-        specifier: 2.0.6
-        version: 2.0.6
-      '@tsconfig/vite-react':
-        specifier: 7.0.1
-        version: 7.0.1
     devDependencies:
       husky:
         specifier: ^9.1.7
@@ -45,21 +29,6 @@ packages:
   '@pkgr/core@0.2.9':
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
-
-  '@react-native/typescript-config@0.82.0':
-    resolution: {integrity: sha512-L/pZLFh52NUZ7sPAs8IAkQXz/fepuduceqkog6j9YYvbSqS9SQbLSCV9ss/v3XZHaTtRMQD1eq+8WJA0HzqhzA==}
-
-  '@tsconfig/next@2.0.3':
-    resolution: {integrity: sha512-b4aKvmdWnv9aUy+NStUFlefirk3SItW20OJtbi5/ue9oMRaQtUYbN5zsr7OmV3rlx6Gp6h7A82gPoCXhrNGVPQ==}
-
-  '@tsconfig/node-lts@22.0.2':
-    resolution: {integrity: sha512-Kgq5yXTvnUnvlhob0xJpOH4na9PWtuFhHSf94MpDwnENWgiFeJKDNANQV2MT1WpXZYkK2WSWfVYKhVkR7bc8TA==}
-
-  '@tsconfig/strictest@2.0.6':
-    resolution: {integrity: sha512-tPOhmDhIUcDjvpDDYyiUdssP84Eqm7n5KxJe5J3/g+s6xoDIPAf+SIn06dhw7VkhxIvLOnhDDrX7tsqMHNEhDg==}
-
-  '@tsconfig/vite-react@7.0.1':
-    resolution: {integrity: sha512-IVbW532kRhqqiMbX1N+vnGYb+B6vNBw5FM/QXh1wGZOHG8HNeBzGEO8irFSNQUThg9mAHiNirCdwjsYeRyvU+Q==}
 
   ansi-escapes@7.1.1:
     resolution: {integrity: sha512-Zhl0ErHcSRUaVfGUeUdDuLgpkEo8KIFjB4Y9uAc46ScOpdDiU1Dbyplh7qWJeJ/ZHpbyMSM26+X3BySgnIz40Q==}
@@ -275,16 +244,6 @@ packages:
 snapshots:
 
   '@pkgr/core@0.2.9': {}
-
-  '@react-native/typescript-config@0.82.0': {}
-
-  '@tsconfig/next@2.0.3': {}
-
-  '@tsconfig/node-lts@22.0.2': {}
-
-  '@tsconfig/strictest@2.0.6': {}
-
-  '@tsconfig/vite-react@7.0.1': {}
 
   ansi-escapes@7.1.1:
     dependencies:

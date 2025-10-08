@@ -1,6 +1,6 @@
 {
   "name": "@fundingpips/typescript-config",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Shareable TypeScript configurations for FundingPips projects",
   "keywords": [
     "typescript",
@@ -45,13 +45,6 @@
     "release": "npm publish --access public",
     "test": "bash scripts/validate-all.sh",
     "test:config": "bash scripts/validate-config.sh"
-  },
-  "dependencies": {
-    "@react-native/typescript-config": "0.82.0",
-    "@tsconfig/next": "2.0.3",
-    "@tsconfig/node-lts": "22.0.2",
-    "@tsconfig/strictest": "2.0.6",
-    "@tsconfig/vite-react": "7.0.1"
   },
   "devDependencies": {
     "husky": "^9.1.7",

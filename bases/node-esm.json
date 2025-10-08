@@ -1,10 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Node.js ESM",
-  "extends": ["./base.json", "@tsconfig/node-lts/tsconfig.json"],
+  "_comment": [
+    "ESM variant with settings from @tsconfig/node-lts@22.0.2.",
+    "Original: https://github.com/tsconfig/bases/tree/main/bases/node-lts",
+    "Last synced: 2025-01-08"
+  ],
+  "extends": "./base.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "strict": true,
+    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
+    "target": "es2022",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "noEmit": false,
     "outDir": "./dist",
     "rootDir": "./src",

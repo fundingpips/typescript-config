@@ -1,8 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Node.js",
-  "extends": ["./base.json", "@tsconfig/node-lts/tsconfig.json"],
+  "_comment": [
+    "CommonJS variant with settings from @tsconfig/node-lts@22.0.2.",
+    "Original: https://github.com/tsconfig/bases/tree/main/bases/node-lts",
+    "Last synced: 2025-01-08"
+  ],
+  "extends": "./base.json",
   "compilerOptions": {
+    "strict": true,
+    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
+    "target": "es2022",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "module": "CommonJS",
     "moduleResolution": "node",
     "verbatimModuleSyntax": false,

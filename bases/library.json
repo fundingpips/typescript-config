@@ -1,8 +1,27 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Library",
-  "extends": "./base.json",
+  "_comment": [
+    "Fully inlined configuration for libraries to avoid ESLint resolver issues.",
+    "Combines @tsconfig/strictest with library-specific settings.",
+    "Last synced: 2025-01-08"
+  ],
   "compilerOptions": {
+    "strict": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "isolatedModules": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "target": "ES2020",
     "jsx": "react",
