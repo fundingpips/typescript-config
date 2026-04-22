@@ -4,6 +4,13 @@ on:
   release:
     types: [published]
 
+# Guard against double-publish if a release is edited/re-published while
+# a run is in flight. Do NOT set cancel-in-progress here — partial
+# publishes corrupt sigstore attestations and leave inconsistent state.
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
   id-token: write
