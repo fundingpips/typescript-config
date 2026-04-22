@@ -5,7 +5,9 @@
     "Targets React Native 0.83+ with Hermes. Extends base; overrides JSX,",
     "module resolution, and customConditions for the RN bundler.",
     "Keeps allowJs: true because some RN native modules still ship .js files.",
-    "Testing framework is Jest (React Native ecosystem default)."
+    "Testing framework is Jest (React Native ecosystem default).",
+    "include/exclude live in the consumer tsconfig (paths resolve relative",
+    "to the declaring file)."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -25,7 +27,5 @@
     "forceConsistentCasingInFileNames": false,
 
     "types": ["jest"]
-  },
-  "include": ["src", "index.js", ".monicon/*.d.ts"],
-  "exclude": ["node_modules", "android", "ios", "build", "coverage", "**/Pods/**"]
+  }
 }

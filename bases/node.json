@@ -3,7 +3,9 @@
   "display": "FundingPips Node.js (CommonJS)",
   "_comment": [
     "CommonJS Node.js services. Extends base; overrides module system to CJS.",
-    "For new services prefer ./node-esm.json unless CJS is required by a dependency."
+    "For new services prefer ./node-esm.json unless CJS is required.",
+    "include/exclude live in the consumer tsconfig (paths resolve relative",
+    "to the declaring file)."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -21,7 +23,5 @@
     "rootDir": "./src",
 
     "types": ["node"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.spec.ts"]
+  }
 }

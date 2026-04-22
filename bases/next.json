@@ -2,8 +2,11 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Next.js",
   "_comment": [
-    "Only declares settings that differ from ./base.json.",
-    "Everything else inherits; if base changes, consumers pick it up."
+    "Only declares compilerOptions that differ from ./base.json.",
+    "include/exclude deliberately NOT declared: TS resolves those paths",
+    "relative to the file they're declared in, so shipping them from a",
+    "node_modules location is always a bug. Consumers must declare their",
+    "own include/exclude in their project tsconfig."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -13,7 +16,5 @@
     "allowJs": false,
     "checkJs": false,
     "allowImportingTsExtensions": false
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*"],
-  "exclude": ["node_modules", ".next", "out", "public", "*.config.js", "*.config.mjs"]
+  }
 }

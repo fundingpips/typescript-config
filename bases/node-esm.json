@@ -5,7 +5,9 @@
     "ESM Node.js services targeting Node 24+. Extends base; overrides module",
     "resolution to NodeNext for import assertions and node: protocol support.",
     "The `ts-node` config block was removed — Node 24 runs TypeScript natively",
-    "via --experimental-strip-types (stable in Node 23.6+)."
+    "via --experimental-strip-types (stable in Node 23.6+).",
+    "include/exclude live in the consumer tsconfig (paths resolve relative",
+    "to the declaring file)."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -21,7 +23,5 @@
     "rootDir": "./src",
 
     "types": ["node"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.spec.ts"]
+  }
 }

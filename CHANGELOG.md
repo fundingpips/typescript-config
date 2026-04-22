@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-04-23
+
+### Fixed
+
+- **Removed `include` and `exclude` from every base config.** TypeScript resolves those paths relative to the file they're declared in — when the file lives inside `node_modules/@fundingpips/typescript-config/bases/`, the paths pointed into `node_modules`, not the consumer's source tree. The bug was latent in every previous version (including 1.x) but invisible because consumers' own `include`/`exclude` declarations overrode the bogus ones. Exposed in 2.0.0 when consumers started relying on the shared defaults.
+- No functional change for any consumer that already declares its own `include` and `exclude` — which, based on a codebase sweep, is all of them. If a consumer was somehow relying on the shared defaults, they now get the "No inputs were found" error immediately on install and must add their own `include`/`exclude`. Minimum working consumer tsconfig for Next.js:
+  ```json
+  {
+    "extends": "@fundingpips/typescript-config/next",
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*"],
+    "exclude": ["node_modules", ".next", "out", "public", "*.config.js", "*.config.mjs"]
+  }
+  ```
+
 ## [2.0.0] - 2026-04-23
 
 ### Breaking

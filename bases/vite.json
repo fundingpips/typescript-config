@@ -4,7 +4,10 @@
   "_comment": [
     "Vite React apps. Extends base; adds DOM libs and Vite-specific settings.",
     "`erasableSyntaxOnly` (TS 5.8+) enforces compatibility with Node's native",
-    "TypeScript stripping — no `enum`, namespace code, or parameter properties."
+    "TypeScript stripping — no `enum`, namespace code, or parameter properties.",
+    "include/exclude live in the consumer tsconfig (paths resolve relative",
+    "to the declaring file). Consumers typically reference a tsconfig.node.json",
+    "for Vite/build-time files via project references."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -19,8 +22,5 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
     "types": ["vite/client"]
-  },
-  "include": ["src", "vite.config.ts", "vite.config.js"],
-  "exclude": ["node_modules", "dist", "build", "coverage"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  }
 }

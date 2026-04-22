@@ -3,7 +3,10 @@
   "display": "FundingPips Library",
   "_comment": [
     "For publishable TS/React libraries. Extends base and adds emit/declaration settings.",
-    "Only declares settings that differ from ./base.json."
+    "include/exclude must be declared in the consumer tsconfig — TS resolves",
+    "those paths relative to the declaring file, so a shared package can't",
+    "ship them. outDir/rootDir/declarationDir are compiler options and ARE",
+    "safe to ship (TS resolves them relative to the consumer's tsconfig)."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -21,19 +24,5 @@
 
     "allowImportingTsExtensions": false,
     "types": []
-  },
-  "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "coverage",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/__tests__/**",
-    "**/__mocks__/**",
-    "**/*.stories.ts",
-    "**/*.stories.tsx"
-  ]
+  }
 }
