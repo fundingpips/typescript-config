@@ -27,6 +27,15 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: "pnpm"
 
+      # Fail fast before install / tests / sigstore signing if NPM_TOKEN
+      # is expired, revoked, or scoped incorrectly. npm's publish endpoint
+      # returns a misleading 404 on auth failure; `whoami` returns a clear
+      # "ENEEDAUTH" or username, so the failure mode is obvious.
+      - name: Verify npm auth
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
