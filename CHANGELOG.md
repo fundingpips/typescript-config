@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-04-23
+
+### Breaking
+
+- **`base.json`** — removed `experimentalDecorators`, `emitDecoratorMetadata`, `checkJs`, and `allowSyntheticDefaultImports`. No-op for any consumer not using legacy decorator syntax (`@Foo class Bar {}`) — which is all current consumers, verified by grep across the fundingpips/tradin/finticks repos. Stage-3 decorators (TS 5.0+) continue to work without any flag.
+- **`library.json`** — now extends `./base.json` instead of being fully inlined. Picks up all strictness flags from base; overrides only emit/declaration settings. If you relied on library.json having settings that base doesn't (none today), re-declare them in your own tsconfig.
+- **`engines.node`** — bumped from `>=22.19.0` to `>=24.15.0` (current Node LTS, Krypton).
+
+### Changed
+
+- **All bases extend `base.json`** — `vite.json` previously did not. Every shared setting now lives in exactly one place.
+- **Redundancy removed from every base** — `next.json`, `node.json`, `node-esm.json`, `react-native.json` no longer re-declare settings that base already sets (`strict`, `esModuleInterop`, `skipLibCheck`, etc.). 9 redundant lines gone from `next.json` alone.
+- **`node-esm.json`** — dropped the `ts-node` config block. Node 24+ runs TypeScript natively via `--experimental-strip-types` (stable since 23.6).
+- **`node.json` / `node-esm.json`** — `lib` collapsed from a granular list (`es2020.bigint`, `es2020.date`, …) to `["ES2024"]`. Node 24 supports ES2024 natively.
+- **`react-native.json`** — `lib` collapsed from granular ES2019–2022 pieces to `["ES2022"]`. RN 0.82+ with Hermes supports ES2022.
+- **`library.json`** — `target` bumped `ES2020` → inherits base (ES2022); `jsx` bumped `react` → `react-jsx` (React 17+ transform).
+- **Migrated formatter Prettier → oxfmt.** Matches the rest of the FundingPips stack. `sortPackageJson` is built-in to oxfmt, so `prettier-plugin-packagejson` is no longer needed.
+- **Dependencies updated**: `typescript` 5.9.3 → 6.0.3, `lint-staged` 16.2.7 → 16.4.0.
+- **`packageManager`** pinned to `pnpm@10.33.1` with sha512 integrity hash for Corepack verification.
+- **CI / publish workflows** — Node 22 → 24.15.0, pnpm 10.18.1 → 10.33.1. Added `concurrency` group to CI so push + PR runs cancel each other.
+
+### Removed
+
+- **`.npmignore`** — redundant with `files: ["bases"]` in `package.json`. The `files` field is an allowlist (always safer than a blocklist).
+- **`prettier.config.mjs`, `.prettierignore`** — replaced by `oxfmt.config.ts`.
+- **`prettier`, `prettier-plugin-packagejson`** from devDependencies.
+
+### Fixed
+
+- **`base.json`** — `checkJs: true` was a dead setting (silently ignored without `allowJs: true`); removed.
+- **`base.json`** — `allowSyntheticDefaultImports: true` was implicit with `esModuleInterop: true`; removed the noise.
+
 ## [1.2.0] - 2025-12-30
 
 ### Changed

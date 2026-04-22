@@ -1,26 +1,29 @@
 {
   "name": "@fundingpips/typescript-config",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Shareable TypeScript configurations for FundingPips projects",
   "keywords": [
-    "typescript",
-    "tsconfig",
     "config",
     "fundingpips",
     "nextjs",
+    "node",
     "react-native",
-    "node"
+    "tsconfig",
+    "typescript"
   ],
   "homepage": "https://github.com/fundingpips/typescript-config#readme",
   "bugs": {
     "url": "https://github.com/fundingpips/typescript-config/issues"
   },
+  "license": "MIT",
+  "author": "FundingPips",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fundingpips/typescript-config.git"
   },
-  "license": "MIT",
-  "author": "FundingPips",
+  "files": [
+    "bases"
+  ],
   "type": "module",
   "exports": {
     ".": {
@@ -35,34 +38,30 @@
     "./library": "./bases/library.json",
     "./vite": "./bases/vite.json"
   },
-  "files": [
-    "bases"
-  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
     "prepare": "husky",
     "release": "npm publish --access public",
     "test": "bash scripts/validate-all.sh",
     "test:config": "bash scripts/validate-config.sh"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "16.2.7",
-    "prettier": "3.7.4",
-    "prettier-plugin-packagejson": "2.5.20",
-    "typescript": "5.9.3"
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
+    "oxfmt": "0.46.0",
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
     "typescript": ">=5.9.0"
   },
-  "packageManager": "pnpm@10.18.1",
   "engines": {
-    "node": ">=22.19.0"
+    "node": ">=24.15.0"
   },
-  "publishConfig": {
-    "access": "public",
-    "provenance": true,
-    "registry": "https://registry.npmjs.org/"
-  }
+  "packageManager": "pnpm@10.33.1+sha512.Bbo8HV0cGPaN8GRw10BV5i1B/BEKDGYNsbLfsnhTJ/BM8PaDRdRgm8Ugief6A0PDFZOy+VlOLF1dpCYjCsyYIA=="
 }

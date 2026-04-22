@@ -2,39 +2,24 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Library",
   "_comment": [
-    "Fully inlined configuration for libraries to avoid ESLint resolver issues.",
-    "Combines @tsconfig/strictest with library-specific settings.",
-    "Last synced: 2025-01-08"
+    "For publishable TS/React libraries. Extends base and adds emit/declaration settings.",
+    "Only declares settings that differ from ./base.json."
   ],
+  "extends": "./base.json",
   "compilerOptions": {
-    "strict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "target": "ES2020",
-    "jsx": "react",
+    "jsx": "react-jsx",
+
     "noEmit": false,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "./dist/types",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "stripInternal": true,
     "composite": true,
+
     "allowImportingTsExtensions": false,
-    "skipDefaultLibCheck": false,
     "types": []
   },
   "include": ["src/**/*"],
@@ -48,7 +33,7 @@
     "**/*.spec.tsx",
     "**/__tests__/**",
     "**/__mocks__/**",
-    "**/*.stories.tsx",
-    "**/*.stories.ts"
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
   ]
 }

@@ -1,38 +1,27 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "FundingPips Node.js ESM",
+  "display": "FundingPips Node.js (ESM)",
   "_comment": [
-    "ESM variant with settings from @tsconfig/node-lts@22.0.2.",
-    "Original: https://github.com/tsconfig/bases/tree/main/bases/node-lts",
-    "Last synced: 2025-01-08"
+    "ESM Node.js services targeting Node 24+. Extends base; overrides module",
+    "resolution to NodeNext for import assertions and node: protocol support.",
+    "The `ts-node` config block was removed — Node 24 runs TypeScript natively",
+    "via --experimental-strip-types (stable in Node 23.6+)."
   ],
   "extends": "./base.json",
   "compilerOptions": {
-    "strict": true,
-    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
-    "target": "es2022",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+    "lib": ["ES2024"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+
     "noEmit": false,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "declaration": true,
     "declarationMap": true,
     "removeComments": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+
     "types": ["node"]
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "coverage",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
+  "exclude": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.spec.ts"]
 }

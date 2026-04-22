@@ -2,48 +2,46 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "FundingPips Base",
   "_comment": [
-    "Settings from @tsconfig/strictest@2.0.6 inlined for ESLint compatibility.",
-    "Original: https://github.com/tsconfig/bases/tree/main/bases/strictest",
-    "Last synced: 2025-01-08"
+    "Derived from @tsconfig/strictest, inlined for ESLint compatibility.",
+    "Original: https://github.com/tsconfig/bases/tree/main/bases/strictest"
   ],
   "compilerOptions": {
     "strict": true,
-    "allowUnusedLabels": false,
     "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "isolatedModules": true,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+    "useUnknownInCatchVariables": true,
+
     "target": "ES2022",
     "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "resolvePackageJsonExports": true,
+    "resolvePackageJsonImports": true,
+    "allowImportingTsExtensions": true,
     "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
     "noEmit": true,
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo",
-    "useUnknownInCatchVariables": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
-    "resolvePackageJsonExports": true,
-    "resolvePackageJsonImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": false,
     "sourceMap": true,
     "inlineSources": true,
-    "noUncheckedSideEffectImports": true
+
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
