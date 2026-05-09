@@ -19,8 +19,8 @@
     "declaration": true,
     "declarationMap": true,
     "removeComments": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "${configDir}/dist",
+    "rootDir": "${configDir}/src",
 
     "types": ["node"]
   }

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2026-05-09
+
+### Fixed
+
+- Resolve inherited path-valued compiler options with TypeScript `${configDir}` so `@/*`, `rootDir`, `outDir`, `declarationDir`, and `tsBuildInfoFile` point at the consumer project instead of this package's `bases/` directory.
+- Added consumer-style validation that exercises the package exports from a linked project and verifies inherited paths resolve outside this package.
+- Narrowed the npm `files` allowlist to `bases/*.json` so generated artifacts inside `bases/` cannot be published accidentally.
+- Made Husky installation skip explicitly in CI, `HUSKY=0`, non-git contexts, and read-only worktrees so package lifecycle scripts do not fail for dev-only hooks.
+- Corrected README claims that still described removed external `@tsconfig/*` dependencies and deleted `include`/`exclude` defaults.
+
+### Changed
+
+- Updated dev dependencies: `lint-staged` 16.4.0 → 17.0.3 and `oxfmt` 0.46.0 → 0.48.0.
+- Pinned GitHub Actions workflows to current concrete release tags instead of moving major tags.
+
 ## [2.1.0] - 2026-04-23
 
 ### Fixed
