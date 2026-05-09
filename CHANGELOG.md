@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Resolve inherited path-valued compiler options with TypeScript `${configDir}` so `@/*`, `rootDir`, `outDir`, `declarationDir`, and `tsBuildInfoFile` point at the consumer project instead of this package's `bases/` directory.
+- Resolve inherited path-valued compiler options with TypeScript `${configDir}` so `rootDir`, `outDir`, `declarationDir`, and `tsBuildInfoFile` point at the consumer project instead of this package's `bases/` directory.
+- Removed the baked-in `@/*` alias from `base.json`; import aliases are project-layout policy and belong in consumer tsconfigs.
+- Override `tsBuildInfoFile` in the Next.js preset to use Next's `.next/cache/tsconfig.tsbuildinfo` path instead of the base `.tsbuildinfo` path.
 - Added consumer-style validation that exercises the package exports from a linked project and verifies inherited paths resolve outside this package.
 - Narrowed the npm `files` allowlist to `bases/*.json` so generated artifacts inside `bases/` cannot be published accidentally.
 - Made Husky installation skip explicitly in CI, `HUSKY=0`, non-git contexts, and read-only worktrees so package lifecycle scripts do not fail for dev-only hooks.

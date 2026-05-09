@@ -40,10 +40,6 @@
     "incremental": true,
     "tsBuildInfoFile": "${configDir}/.tsbuildinfo",
     "sourceMap": true,
-    "inlineSources": true,
-
-    "paths": {
-      "@/*": ["${configDir}/src/*"]
-    }
+    "inlineSources": true
   }
 }

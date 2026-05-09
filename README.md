@@ -33,10 +33,7 @@ pnpm add -D @fundingpips/typescript-config
 
 ```json
 {
-  "extends": "@fundingpips/typescript-config/next",
-  "compilerOptions": {
-    "baseUrl": "."
-  }
+  "extends": "@fundingpips/typescript-config/next"
 }
 ```
 
@@ -110,7 +107,6 @@ For custom configurations, extend the base:
 ### All Configurations Include
 
 - ✓ Strict type checking (via inlined strict options)
-- ✓ Path aliases (`@/*` → `src/*`)
 - ✓ JSON module imports
 - ✓ ES module interop
 - ✓ Incremental compilation
@@ -184,14 +180,19 @@ noUnusedParameters: true;
 
 ## Path Aliases
 
-All configurations support the `@/*` alias for the consumer project's `src` directory:
+Path aliases are intentionally not configured by default. They encode a project layout and import convention, so they belong in the consumer project's `tsconfig.json`.
 
-```typescript
-// Instead of:
-import { Button } from "../../../components/Button";
+If a project uses `@/*` for its local `src` directory, declare it explicitly:
 
-// Use:
-import { Button } from "@/components/Button";
+```json
+{
+  "extends": "@fundingpips/typescript-config/next",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["${configDir}/src/*"]
+    }
+  }
+}
 ```
 
 ## Migration Guide
@@ -228,7 +229,7 @@ If you need to override settings:
     // Allow JavaScript files (not recommended)
     "allowJs": true,
 
-    // Custom paths
+    // Project-local import aliases
     "paths": {
       "@/*": ["${configDir}/src/*"],
       "@components/*": ["${configDir}/src/components/*"]
@@ -253,7 +254,7 @@ This package does not ship `include` or `exclude` values. TypeScript resolves th
 
 ### "Cannot find module" errors
 
-The built-in `@/*` alias points at your project-local `src` directory. If you replace `compilerOptions.paths`, include the alias explicitly:
+This package does not define import aliases. Declare aliases in the consumer `tsconfig.json`:
 
 ```json
 {

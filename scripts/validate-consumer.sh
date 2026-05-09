@@ -21,7 +21,7 @@ export const foo = 1;
 EOF
 
 cat >"$CONSUMER_DIR/src/index.ts" <<'EOF'
-import { foo } from "@/foo";
+import { foo } from "./foo";
 
 export const value = foo;
 EOF
@@ -68,9 +68,8 @@ if (containsPackagePath(compilerOptions)) {
   fail("resolved compilerOptions still point at this package's bases directory");
 }
 
-const aliasTarget = compilerOptions.paths?.["@/*"]?.[0];
-if (aliasTarget !== `${consumerDir}/src/*`) {
-  fail(`@/* resolved to ${aliasTarget ?? "<missing>"} instead of the consumer src directory`);
+if (compilerOptions.paths) {
+  fail("shared configs must not ship project-layout path aliases");
 }
 
 if (["node", "node-esm", "library"].includes(config)) {
@@ -90,10 +89,15 @@ if (config === "library" && compilerOptions.declarationDir !== "./dist/types") {
   );
 }
 
-if (
-  config === "vite" &&
-  compilerOptions.tsBuildInfoFile !== "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
-) {
+if (config === "next" && compilerOptions.tsBuildInfoFile !== "./.next/cache/tsconfig.tsbuildinfo") {
+  fail(
+    `tsBuildInfoFile resolved to ${
+      compilerOptions.tsBuildInfoFile ?? "<missing>"
+    } instead of ./.next/cache/tsconfig.tsbuildinfo`,
+  );
+}
+
+if (config === "vite" && compilerOptions.tsBuildInfoFile !== "./node_modules/.tmp/tsconfig.app.tsbuildinfo") {
   fail(
     `tsBuildInfoFile resolved to ${
       compilerOptions.tsBuildInfoFile ?? "<missing>"
@@ -101,7 +105,7 @@ if (
   );
 }
 
-if (config !== "vite" && compilerOptions.tsBuildInfoFile !== "./.tsbuildinfo") {
+if (!["next", "vite"].includes(config) && compilerOptions.tsBuildInfoFile !== "./.tsbuildinfo") {
   fail(
     `tsBuildInfoFile resolved to ${
       compilerOptions.tsBuildInfoFile ?? "<missing>"
@@ -114,4 +118,4 @@ NODE
 done
 
 $TSC --project "$CONSUMER_DIR/tsconfig.base.json" --pretty false
-echo "✅ base path alias resolves in a consumer project"
+echo "✅ base relative imports resolve in a consumer project"

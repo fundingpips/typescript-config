@@ -15,6 +15,7 @@
     "plugins": [{ "name": "next" }],
     "allowJs": false,
     "checkJs": false,
-    "allowImportingTsExtensions": false
+    "allowImportingTsExtensions": false,
+    "tsBuildInfoFile": "${configDir}/.next/cache/tsconfig.tsbuildinfo"
   }
 }
