@@ -28,4 +28,7 @@ for config in bases/*.json; do
 done
 
 echo ""
+bash scripts/validate-consumer.sh
+
+echo ""
 echo "✅ All configurations validated successfully!"

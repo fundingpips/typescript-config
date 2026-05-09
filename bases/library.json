@@ -5,8 +5,8 @@
     "For publishable TS/React libraries. Extends base and adds emit/declaration settings.",
     "include/exclude must be declared in the consumer tsconfig — TS resolves",
     "those paths relative to the declaring file, so a shared package can't",
-    "ship them. outDir/rootDir/declarationDir are compiler options and ARE",
-    "safe to ship (TS resolves them relative to the consumer's tsconfig)."
+    "ship them. Other path-valued options use ${configDir} so they resolve",
+    "against the consumer tsconfig."
   ],
   "extends": "./base.json",
   "compilerOptions": {
@@ -16,9 +16,9 @@
     "noEmit": false,
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "./dist/types",
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "declarationDir": "${configDir}/dist/types",
+    "outDir": "${configDir}/dist",
+    "rootDir": "${configDir}/src",
     "stripInternal": true,
     "composite": true,
 

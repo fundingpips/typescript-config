@@ -4,15 +4,15 @@
 [![CI](https://github.com/fundingpips/typescript-config/actions/workflows/ci.yml/badge.svg)](https://github.com/fundingpips/typescript-config/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Shareable TypeScript configurations for FundingPips projects. This package provides strict, consistent TypeScript configurations optimized for different project types.
+Shareable TypeScript configurations for FundingPips projects. This package provides strict, self-contained TypeScript configurations optimized for different project types.
 
 ## Features
 
-- ✨ **Maximum Type Safety** - Extends [@tsconfig/strictest](https://github.com/tsconfig/bases) for the highest level of type checking
+- ✨ **Maximum Type Safety** - Inlines strict compiler options for the highest level of type checking
 - 📦 **Multiple Presets** - Configurations for Next.js, React Native, Node.js, Vite, and libraries
 - 🎯 **Consistent Standards** - Unified settings across all FundingPips projects
 - ⚡ **Performance Optimized** - Incremental builds and smart defaults
-- 🚀 **Zero Config** - Works out of the box with sensible defaults
+- 🚀 **Minimal Config** - Works with project-local overrides only where TypeScript requires them
 
 ## Installation
 
@@ -109,7 +109,7 @@ For custom configurations, extend the base:
 
 ### All Configurations Include
 
-- ✓ Strict type checking (via @tsconfig/strictest)
+- ✓ Strict type checking (via inlined strict options)
 - ✓ Path aliases (`@/*` → `src/*`)
 - ✓ JSON module imports
 - ✓ ES module interop
@@ -124,7 +124,7 @@ For custom configurations, extend the base:
 - DOM library types
 - Next.js plugin support
 - Optimized for App Router
-- ES2017 target for broader compatibility
+- Inherits the shared ES2022 target
 
 #### React Native (`/react-native`)
 
@@ -132,7 +132,6 @@ For custom configurations, extend the base:
 - Mobile-optimized library selection
 - Jest types included
 - Support for `.monicon` files
-- iOS/Android excludes
 
 #### Node.js (`/node`, `/node-esm`)
 
@@ -140,7 +139,6 @@ For custom configurations, extend the base:
 - Compiled output to `dist/`
 - Declaration files generation
 - CommonJS or ESM modules
-- Test file exclusion
 
 #### Vite (`/vite`)
 
@@ -155,7 +153,6 @@ For custom configurations, extend the base:
 - Multiple module format support
 - Stripped internal APIs
 - Composite project support
-- Storybook file exclusion
 
 ## Strictness Settings
 
@@ -187,7 +184,7 @@ noUnusedParameters: true;
 
 ## Path Aliases
 
-All configurations support the `@/*` alias for the `src` directory:
+All configurations support the `@/*` alias for the consumer project's `src` directory:
 
 ```typescript
 // Instead of:
@@ -233,8 +230,8 @@ If you need to override settings:
 
     // Custom paths
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"]
+      "@/*": ["${configDir}/src/*"],
+      "@components/*": ["${configDir}/src/components/*"]
     }
   }
 }
@@ -242,15 +239,30 @@ If you need to override settings:
 
 ## Troubleshooting
 
+### No inputs were found
+
+This package does not ship `include` or `exclude` values. TypeScript resolves those paths relative to the file that declares them, so shared configs cannot define them safely. Add project-local values in your `tsconfig.json`:
+
+```json
+{
+  "extends": "@fundingpips/typescript-config/next",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
 ### "Cannot find module" errors
 
-Ensure your `baseUrl` is set correctly:
+The built-in `@/*` alias points at your project-local `src` directory. If you replace `compilerOptions.paths`, include the alias explicitly:
 
 ```json
 {
   "extends": "@fundingpips/typescript-config/next",
   "compilerOptions": {
-    "baseUrl": "."
+    "paths": {
+      "@/*": ["${configDir}/src/*"],
+      "@components/*": ["${configDir}/src/components/*"]
+    }
   }
 }
 ```
@@ -284,13 +296,13 @@ For Node.js projects, ensure your `package.json` has the correct `type`:
 
 ## Dependencies
 
-This package includes and extends:
+This package is self-contained and does not depend on external tsconfig base packages at runtime. The shared presets inline the strict compiler options directly so consumers do not need resolver support for nested `extends`.
 
-- `@tsconfig/strictest` - Maximum strictness settings
-- `@tsconfig/next` - Next.js optimized settings
-- `@react-native/typescript-config` - React Native settings
-- `@tsconfig/node-lts` - Node.js LTS settings
-- `@tsconfig/vite-react` - Vite React settings
+Development uses:
+
+- `typescript` - Validates all shipped configurations
+- `oxfmt` - Formats JSON, Markdown, and JavaScript/TypeScript config files
+- `husky` and `lint-staged` - Run formatting on staged files
 
 ## Development
 

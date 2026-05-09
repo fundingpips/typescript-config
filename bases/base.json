@@ -3,7 +3,9 @@
   "display": "FundingPips Base",
   "_comment": [
     "Derived from @tsconfig/strictest, inlined for ESLint compatibility.",
-    "Original: https://github.com/tsconfig/bases/tree/main/bases/strictest"
+    "Original: https://github.com/tsconfig/bases/tree/main/bases/strictest",
+    "Path-valued options use ${configDir} so they resolve against the",
+    "consumer tsconfig, not this package's node_modules location."
   ],
   "compilerOptions": {
     "strict": true,
@@ -36,12 +38,12 @@
 
     "noEmit": true,
     "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo",
+    "tsBuildInfoFile": "${configDir}/.tsbuildinfo",
     "sourceMap": true,
     "inlineSources": true,
 
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["${configDir}/src/*"]
     }
   }
 }
